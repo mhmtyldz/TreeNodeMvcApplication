@@ -58,14 +58,13 @@
             @{
                 if (Model != null && Model.Count() > 0)
                 {
-                    @*Here I will going to load Treeview menus*@
+                   
                     <ul>
                         @foreach (var i in Model)
                         {
                             <li>
                                 <span class="collapse collapsible" data-loaded="false" pid="@i.MenuID">&nbsp;</span>
-                                @* Here I have added the above span for collapsible button for treeview *@
-                                @* and data-loaded="false" means its sub menu not loaded yet from database *@
+                                
                                 <span>
                                     <a href="@i.NavURL">@i.MenuName</a>
                                 </span>
@@ -79,6 +78,6 @@
 </div>
 
 
+
+
 <script src="~/Scripts/Treeview.js"></script>
-
-

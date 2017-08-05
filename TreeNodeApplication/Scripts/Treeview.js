@@ -11,12 +11,12 @@
         var isLoaded = $(this1).attr('data-loaded'); //Data tüklendi mi yüklenmedi mi kontrol ediyorz.
 
         if (isLoaded == "false") {
-            $(this1).addClass("loadingP");
-            $(this1).removeClass("collapse");
+            $(this1).addClass("loadingP");  //Eğer Yüklenmemişse LoadingP yi çalştır
+            $(this1).removeClass("collapse"); //Spanda ki collapse yi sil
 
-            //Now Load Data Here
+            
 
-            $.ajax({
+            $.ajax({ //Klasik Ajax ile Get işlemleri
                 url: "/Treeview/GetSubMenu",
                 type: "GET",
                 data: data,
@@ -27,7 +27,7 @@
                         var $ul = $("<ul></ul>");
                         $.each(d, function (i, ele) {
                             $ul.append(
-                                $("<li></li>").append(
+                                $("<li></li>").append( // Linin içine foreach le dataları ekliyoruz onu da liste haline gelmesi için ul ye ekliyoruz
                                     "<span class='collapse collapsible' data-loaded='false' pid='" + ele.MenuID + "'>&nbsp;</span>" +
                                     "<span><a href='" + ele.NavURL + "'>" + ele.MenuName + "</a></span>"
                                 )
@@ -35,20 +35,20 @@
 
                         });
 
-                        $(this1).parent().append($ul);
+                        $(this1).parent().append($ul); //thisin parentina ul yi ekle
                         $(this1).addClass('collapse');
                         $(this1).toggleClass('collapse expand');
-                        $(this1).closest('li').children('ul').slideDown();
+                        $(this1).closest('li').children('ul').slideDown(); 
                     }
 
                     else {
                         //sub Menu yoksa
 
-                        $(this1).css({ 'dislay': 'inline-block', 'width': '15px' });
+                        $(this1).css({ 'dislay': 'inline-block', 'width': '15px' }); //calışmazsa css imizi çalştır
                     }
 
                     $(this1).attr('data-loaded', true);
-                },
+                }, 
                 error: function () {
                     alert("Error!");
                 }
